@@ -1,1 +1,21 @@
-aokp caf kitkat device tree for the lg volt
+Insert the following into a file called x5.mk in /vendor/aokp/products before building:
+
+# Inherit device configuration
+$(call inherit-product, device/lge/x5/full_x5.mk)
+
+# Inherit CDMA common stuff
+$(call inherit-product, vendor/aokp/configs/cdma.mk)
+
+# Inherit common product files.
+$(call inherit-product, vendor/aokp/configs/common.mk)
+
+# boot animation
+PRODUCT_COPY_FILES += \
+    vendor/aokp/prebuilt/bootanimation/bootanimation_480.zip:system/media/bootanimation.zip
+
+# Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := x5
+PRODUCT_NAME := aokp_x5
+PRODUCT_BRAND := lge
+PRODUCT_MODEL := x5
+PRODUCT_MANUFACTURER := LGE
