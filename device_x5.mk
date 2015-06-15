@@ -165,9 +165,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# LTE on CDMA
+# Keyhandler
 PRODUCT_PACKAGES += \
-    Stk
+    com.cyanogenmod.keyhandler
 
 # Crda
 PRODUCT_PACKAGES += \
@@ -230,7 +230,6 @@ PRODUCT_PACKAGES += \
     lights.msm8226 \
     nfc.msm8226 \
     memtrack.msm8226 \
-    keystore.msm8226 \
     power.msm8226
 
 # QRNG
