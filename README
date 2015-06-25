@@ -1,22 +1,16 @@
 Insert the following into a file called x5.mk in /vendor/aokp/products before building:
 
-# Check for target product
-ifeq (pac_x5,$(TARGET_PRODUCT))
+$(call inherit-product, device/lge/x5/full_x5.mk)
 
-# Copy bootanimation
-PRODUCT_COPY_FILES += \
-    vendor/pac/prebuilt/540x960/bootanimation.zip:system/media/bootanimation.zip
+# Inherit some common stuff.
+$(call inherit-product, vendor/aokp/configs/gsm.mk)
+$(call inherit-product, vendor/aokp/configs/cdma.mk)
 
-# include PAC common configuration
-include vendor/pac/config/pac_common.mk
+# Inherit common product files.
+$(call inherit-product, vendor/aokp/configs/common.mk)
 
-# Inherit CM device configuration
-$(call inherit-product, device/lge/x5/cm.mk)
+PRODUCT_DEVICE := x5
+PRODUCT_NAME := aokp_x5
 
-PRODUCT_NAME := pac_x5
-
-endif
-
-###################################################
-
-Also, I had to comment out line 591 in packages/apps/Settings/src/com/android/settings/cyanogenmod/ButtonSettings.java to get it to build.
+PRODUCT_COPY_FILES +=  \
+    vendor/aokp/prebuilt/bootanimation/bootanimation_720.zip:system/media/bootanimation.zip
